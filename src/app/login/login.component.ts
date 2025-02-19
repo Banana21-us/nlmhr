@@ -28,7 +28,11 @@ export class LoginComponent {
       (result: any) => {
         if (result.token != null) {
           localStorage.setItem('token', result.token);
-          localStorage.setItem('id', result.id);
+          localStorage.setItem('user', result.id);
+
+          const user = result.admin;
+          localStorage.setItem('users', JSON.stringify(user));
+          
           console.log('Token stored:', result.token);
           this.navigateToMainPage();
         }

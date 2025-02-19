@@ -35,7 +35,7 @@
      <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
-        <i class="bi bi-pencil ms-3"></i>
+        <i class="bi bi-pencil ms-3" (click)="editleave(element)"></i>
         <i class="bi bi-trash3 ms-3" (click)="deleteleave(element.id)"></i>
       </td>
     </ng-container>

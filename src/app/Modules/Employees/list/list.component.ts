@@ -9,6 +9,8 @@ import {
 import { CreateComponent } from '../create/create.component';
 import { ApiService } from '../../../api.service';
 import { CommonModule } from '@angular/common';
+import { UpdateComponent } from '../update/update.component';
+import { ViewComponent } from '../view/view.component';
 
 export interface Employee {
   id: number; // ✅ Added ID field
@@ -36,10 +38,27 @@ export class ListComponent implements OnInit {
   dataSource = new MatTableDataSource<Employee>([]);
 
   ngOnInit(): void {
+    this.getdata();
+  }
+  getdata(){
     this.employeeService.getEmployees().subscribe(data => {
       this.dataSource.data = data;
     });
   }
+  viewemployee(element: any): void {
+    const dialogRef = this.dialog.open(ViewComponent, {
+      width: '95vw',
+      height: '90vh',
+      maxWidth: '95vw',
+      maxHeight: '90vh', // Prevents it from being too tall
+      data: { empId: element.id }
+       
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+  
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateComponent, {
@@ -50,10 +69,25 @@ export class ListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result) { // Only call getdata() if the dialog closed after successful submission
+        this.getdata();
+      }
     });
   }
 
+  editemployee(element: any) {
+        const dialogRef = this.dialog.open(UpdateComponent, {
+          width: 'auto',
+          height: 'auto',
+          data: { emp: element } 
+        });
+      
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) { 
+            this.getdata(); // Refresh data if update was successful
+          }
+        });
+  }
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

@@ -5,10 +5,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import {
-  MatDialog
+  MatDialog,
+  MatDialogRef
 } from '@angular/material/dialog';
 import { CreateComponent } from '../create/create.component';
 import { ApiService } from '../../../api.service';
+import { UpdateComponent } from '../update/update.component';
 
 export interface leavemanagement {
   id: number;
@@ -33,6 +35,9 @@ export class ListComponent implements OnInit{
   displayedColumns: string[] = ['type', 'days_allowed','description', 'actions'];
 
   ngOnInit(): void {
+    this.getdata();
+  }
+  getdata(){
     this.leavemanagementService.getleave().subscribe(data => {
       this.dataSource.data = data;
     });
@@ -40,15 +45,34 @@ export class ListComponent implements OnInit{
   
   openDialog() {
     const dialogRef = this.dialog.open(CreateComponent, {
-      width: 'auto',  // 90% of viewport width
-      height: 'auto', // 90% of viewport height
-      
+      width: 'auto',
+      height: 'auto',
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result) { // Only call getdata() if the dialog closed after successful submission
+        this.getdata();
+      }
     });
   }
+
+  editleave(element: any) {
+    const dialogRef = this.dialog.open(UpdateComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: { leave: element } // Pass the entire leave object
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { 
+        this.getdata(); // Refresh data if update was successful
+      }
+    });
+  }
+  
+
+  
+  
   
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

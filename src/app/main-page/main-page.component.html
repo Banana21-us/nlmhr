@@ -6,12 +6,12 @@
     <span class="example-spacer"></span>
   
   <button mat-icon-button class="example-icon circle-btn ms-2" [matMenuTriggerFor]="profileMenu">
-    <img src="logo.png" class="prof-image" />
+    <img src="assets/logo.png" class="prof-image" />
     <!-- [src]="adminPic ? adminPic: '/assets/mik.jpg'" -->
   </button>
   
   <mat-menu #profileMenu="matMenu">
-      <button mat-menu-item [routerLink]="['/main-page/account/account']">
+      <button mat-menu-item [routerLink]="['/main-page/Account/']">
           <mat-icon>settings</mat-icon>
           <span>Account Settings</span>
       </button>

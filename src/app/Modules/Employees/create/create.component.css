@@ -69,23 +69,23 @@ form .fields .input-field{
     flex-direction: column;
     margin: 4px 0;
 }
-form .fields .input-field4{
+form .fields .input-fields{
     display: flex;
-    width: calc(100% / 4 - 15px);
+    width: calc(100% / 6 - 15px);
     flex-direction: column;
     margin: 4px 0;
 }
 /* 4 */
-.input-field4 label{
+.input-fields label{
     font-size: 12px;
     font-weight: 500;
     color: #2e2e2e;
 }
-.input-field4 input, select{
+.input-fields input, select{
     outline: none;
     font-size: 14px;
     font-weight: 400;
-    color: #333;
+    color: #000;
     border-radius: 5px;
     border: 1px solid #aaa;
     padding: 0 15px;
@@ -96,13 +96,13 @@ form .fields .input-field4{
 .input-field label{
     font-size: 12px;
     font-weight: 500;
-    color: #2e2e2e;
+    color: #000;
 }
 .input-field input, select{
     outline: none;
     font-size: 14px;
     font-weight: 400;
-    color: #333;
+    color: #000;
     border-radius: 5px;
     border: 1px solid #aaa;
     padding: 0 15px;
@@ -115,7 +115,7 @@ form .fields .input-field4{
 }
 .input-field select,
 .input-field input[type="date"]{
-    color: #707070;
+    color: #222;
 }
 .input-field input[type="date"]:valid{
     color: #333;

@@ -1,11 +1,12 @@
 /* Basic reset and layout styles */
-
+i{
+  cursor: pointer;
+}
 .table-container {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 2rem;
-    margin: 2rem auto;
     margin-bottom: 0%;
   }
   
@@ -16,13 +17,12 @@
   }
   
   h2 {
-    margin-top: 10px;
-    margin-bottom: 1.6rem;
-    font-size: 1.8rem;
-    color: #003366;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    font-size: 26px;
+    margin: 20px 0;
+    padding: 20px 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Adds shadow */
   }
   
   .form-group {
@@ -110,4 +110,7 @@
     font-size: 24px;
     /* Adjust size as needed */
   }
-  
+  mat-form-field {
+    display: flex;
+    margin-left: auto; /* Pushes it to the right */
+  }

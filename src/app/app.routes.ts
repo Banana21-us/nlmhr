@@ -8,6 +8,7 @@ import { departmentsRoutes } from './Modules/Departments/dapartmets.routes';
 import { LeaveManagementRoutes } from './Modules/LeaveManagement/leavemanagement.routes';
 import { LeaveRequest } from './Modules/LeaveRequest/leaverequest.routes';
 import { inject } from '@angular/core';
+import { AccountComponent } from './Modules/Account/account.component';
 
 export const loginGuard: CanActivateFn = (route,state)=>{
   const localData = localStorage.getItem('token');
@@ -25,6 +26,8 @@ export const routes: Routes = [
     { path: 'main-page', component: MainPageComponent ,
       children: [
         { path: 'Dashboard',component: DashboardComponent 
+        },
+        { path: 'Account',component: AccountComponent 
         },
         { path: 'Employee', 
           loadChildren: () => import('./Modules/Employees/employee.routes').then(r => EmployeeRoutes),

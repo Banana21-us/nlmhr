@@ -1,14 +1,20 @@
 import { Routes } from '@angular/router';
-import { CreateComponent } from './create/create.component';
-import { UpdateComponent } from './update/update.component';
-import { ListComponent } from './list/list.component';
+import { MainComponent } from './main/main.component';
+import { DeptComponent } from './dept/dept.component';
+import { DesignationComponent } from './designation/designation.component';
+import { PositionComponent } from './position/position.component';
 
 export const departmentsRoutes: Routes = [
-    {path: 'create', component: CreateComponent},
-    {path: 'update', component: UpdateComponent},
-    {path: 'list', component: ListComponent},
+    {path: 'main', component: MainComponent,
+        children: [
+            {path: 'dept', component: DeptComponent},
+            {path: 'designation', component: DesignationComponent},
+            {path: 'position', component: PositionComponent},
+            {path: '', redirectTo: 'dept', pathMatch:"full"}
+        ],
+    },
 
-    {path: '', redirectTo: 'list', pathMatch: 'full'}
+    {path: '', redirectTo: 'main', pathMatch: 'full'}
     ];
 
     
